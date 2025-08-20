@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — Page Not Found | EZ Game Audio Converter</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .not-found {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1rem;
+      position: relative;
+      z-index: 5;
+    }
+    .not-found .card {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+    .not-found h1 {
+      font-family: "Orbitron", monospace;
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .not-found p { color: var(--text-secondary); margin: 0.5rem 0 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <!-- Background system (no external assets) -->
+  <div class="cosmic-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="grid-lines"></div>
+    <div class="aurora"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <main class="not-found">
+    <div class="glass-container card">
+      <h1>404 — Lost in Space</h1>
+      <p>The page you’re looking for doesn’t exist here.</p>
+      <p>You’ll be redirected to the homepage shortly.</p>
+      <div class="btn-row" style="margin-top: 1rem;">
+        <a id="home-btn" class="btn btn-primary" href="./">Go Home</a>
+        <a class="btn btn-secondary" href="https://github.com/SpaceFoon/Ez-Game-Audio-Conversion" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Compute project base path for GitHub Pages ("/repo-name/")
+    (function() {
+      var parts = window.location.pathname.split('/').filter(Boolean);
+      var base = '/';
+      // On project pages, the first segment is the repo name
+      if (parts.length > 0) {
+        base = '/' + parts[0] + '/';
+      }
+      // Wire the Home button and auto-redirect after a short delay
+      var homeBtn = document.getElementById('home-btn');
+      if (homeBtn) homeBtn.setAttribute('href', base);
+      setTimeout(function(){ window.location.href = base; }, 3500);
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
